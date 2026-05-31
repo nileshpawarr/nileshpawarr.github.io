@@ -5,7 +5,7 @@ export default defineConfig({
     alias: { '~': new URL('./src', import.meta.url).pathname },
   },
   test: {
-    environment: 'node',
+    environment: 'jsdom',
     include: ['tests/unit/**/*.test.ts'],
     coverage: {
       reporter: ['text', 'json-summary'],
