@@ -21,6 +21,10 @@ export default [
     },
   },
   {
+    files: ['**/*.cjs'],
+    languageOptions: { sourceType: 'commonjs' },
+  },
+  {
     ignores: [
       'dist/',
       '.astro/',
