@@ -7,13 +7,13 @@ test.describe('smoke', () => {
     await expect(page).toHaveTitle(/Nilesh Pawar/);
 
     // Each section present and has heading
-    const sectionIds = ['top', 'about', 'skills', 'work', 'projects', 'contact'];
+    const sectionIds = ['top', 'about', 'skills', 'experience', 'projects', 'contact'];
     for (const id of sectionIds) {
       await expect(page.locator(`#${id}`)).toBeVisible();
     }
 
     // Nav links resolve to anchored sections
-    const navAnchors = ['#work', '#projects', '#contact'];
+    const navAnchors = ['#experience', '#projects', '#contact'];
     for (const href of navAnchors) {
       const link = page.locator(`header a[href="${href}"]`).first();
       await expect(link).toBeVisible();
