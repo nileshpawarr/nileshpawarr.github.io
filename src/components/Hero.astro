@@ -1,0 +1,128 @@
+---
+import { profile } from '~/data/profile';
+---
+
+<section id="top" class="relative flex min-h-[100svh] items-center px-6 md:px-16">
+  <div class="mx-auto w-full max-w-container">
+    <div class="hero-stage flex max-w-content flex-col gap-6">
+      <div
+        class="hero-status flex items-center gap-2 text-meta uppercase tracking-label text-text-faint"
+      >
+        <span class="inline-block h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_8px_var(--accent)]"
+        ></span>
+        <span>{profile.location} · {profile.status}</span>
+      </div>
+
+      <h1 class="hero-title text-hero-sm font-medium tracking-hero text-text md:text-hero">
+        Frontend architecture<br />
+        for <em class="not-italic-fallback font-normal text-accent">AI-native</em> teams.
+      </h1>
+
+      <p class="hero-sub max-w-content text-lg text-text-muted">
+        Twelve years across React, Angular, Vue and Svelte. Currently at <strong
+          class="font-medium text-text">Voyfai</strong
+        >, running Claude + MCP pipelines that turn Jira tickets into pull requests.
+      </p>
+
+      <div class="hero-cta">
+        <a
+          href="#work"
+          class="cta-link group inline-flex items-baseline gap-1 border-b border-border pb-0.5 text-sm font-medium text-text transition-colors duration-fast ease-snappy hover:border-accent hover:text-accent"
+        >
+          Read the work
+          <span
+            aria-hidden="true"
+            class="text-accent transition-transform duration-fast ease-snappy group-hover:translate-x-1"
+            >→</span
+          >
+        </a>
+      </div>
+    </div>
+
+    <div
+      class="hero-meta absolute bottom-8 left-6 right-6 flex justify-between text-meta uppercase tracking-label text-text-faint md:left-16 md:right-16"
+    >
+      <span>NP · 2026</span>
+      <span aria-hidden="true">↓ scroll</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Italic-styled accent (keeps weight regular but renders italic) */
+  .not-italic-fallback {
+    font-style: italic;
+  }
+
+  .hero-stage > * {
+    opacity: 0;
+    transform: translateY(8px);
+    animation: hero-rise var(--dur-hero) var(--ease-out) forwards;
+  }
+  .hero-status {
+    animation-delay: 100ms;
+  }
+  .hero-title {
+    animation-delay: 220ms;
+  }
+  .hero-sub {
+    animation-delay: 380ms;
+  }
+  .hero-cta {
+    animation-delay: 520ms;
+  }
+  .hero-meta {
+    opacity: 0;
+    animation: hero-fade var(--dur-slow) var(--ease-out) 800ms forwards;
+  }
+
+  @keyframes hero-rise {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes hero-fade {
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Italic accent shimmer — runs once on load */
+  .hero-title em {
+    background-image: linear-gradient(
+      90deg,
+      var(--accent) 0%,
+      var(--accent) 40%,
+      #ffffff 50%,
+      var(--accent) 60%,
+      var(--accent) 100%
+    );
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 1.5s var(--ease-standard) 1.2s 1 forwards;
+  }
+  @keyframes shimmer {
+    to {
+      background-position: 0 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-stage > *,
+    .hero-meta {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+    }
+    .hero-title em {
+      background: none;
+      color: var(--accent);
+      -webkit-text-fill-color: var(--accent);
+    }
+  }
+</style>
