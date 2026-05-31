@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nileshpawarr.github.io/sitemap-index.xml
