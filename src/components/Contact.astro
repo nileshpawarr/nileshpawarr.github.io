@@ -1,0 +1,95 @@
+---
+import SectionReveal from '~/components/SectionReveal.astro';
+import { profile } from '~/data/profile';
+---
+
+<section
+  id="contact"
+  aria-labelledby="contact-heading"
+  class="scroll-mt-20 border-t border-border px-6 py-24 md:px-16 md:py-32"
+>
+  <div class="mx-auto max-w-container">
+    <SectionReveal>
+      <p class="mb-6 text-meta uppercase tracking-label text-text-faint">Contact</p>
+      <h2
+        id="contact-heading"
+        class="mb-6 max-w-content text-xl font-medium tracking-head text-text md:text-2xl"
+      >
+        Best way to reach me: email or LinkedIn.
+      </h2>
+      <p class="mb-10 max-w-content text-lg text-text-muted">
+        I read every message. If the role is a fit I'll reply within a couple of days.
+      </p>
+
+      <ul class="flex flex-wrap gap-3">
+        <li>
+          <a href={`mailto:${profile.email}`} class="contact-cta"> Email </a>
+        </li>
+        <li>
+          <a
+            href={profile.links.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-cta"
+          >
+            LinkedIn ↗
+          </a>
+        </li>
+        <li>
+          <a
+            href={profile.links.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-cta"
+          >
+            GitHub ↗
+          </a>
+        </li>
+        <li>
+          <a
+            href={profile.links.medium}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-cta"
+          >
+            Medium ↗
+          </a>
+        </li>
+        <li>
+          <a href={profile.resumePdf} download class="contact-cta contact-cta--primary">
+            Download CV (PDF)
+          </a>
+        </li>
+      </ul>
+    </SectionReveal>
+  </div>
+</section>
+
+<style>
+  .contact-cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.625rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text);
+    transition:
+      border-color var(--dur-fast) var(--ease-snappy),
+      color var(--dur-fast) var(--ease-snappy),
+      background var(--dur-fast) var(--ease-snappy);
+  }
+  .contact-cta:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .contact-cta--primary {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+  }
+  .contact-cta--primary:hover {
+    background: transparent;
+    color: var(--accent);
+  }
+</style>
