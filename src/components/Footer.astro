@@ -1,23 +1,19 @@
 ---
 const buildYear = new Date().getFullYear();
-const buildDate = new Date().toISOString().slice(0, 10);
 ---
 
 <footer class="border-t border-border px-6 py-12 md:px-16">
-  <div
-    class="mx-auto flex max-w-container flex-col gap-2 md:flex-row md:items-baseline md:justify-between"
-  >
+  <div class="mx-auto flex max-w-container items-baseline justify-between">
     <p class="text-meta uppercase tracking-label text-text-faint">
       NP · {buildYear}
     </p>
-    <p class="text-meta uppercase tracking-label text-text-faint">
-      Built with Astro · last updated {buildDate} ·
-      <a
-        href="https://github.com/nileshpawarr/nileshpawarr.github.io"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="transition-colors duration-fast ease-snappy hover:text-accent">Source ↗</a
-      >
-    </p>
+    <a
+      href="https://github.com/nileshpawarr/nileshpawarr.github.io"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-meta uppercase tracking-label text-text-faint transition-colors duration-fast ease-snappy hover:text-accent"
+    >
+      Source ↗
+    </a>
   </div>
 </footer>
