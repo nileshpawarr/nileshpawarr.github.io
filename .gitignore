@@ -1,0 +1,30 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# build outputs
+dist/
+.astro/
+.cache/
+
+# test artifacts
+playwright-report/
+test-results/
+coverage/
+.lighthouseci/
+
+# IDE / OS
+.DS_Store
+.vscode/
+.idea/
+*.log
+*.tmp
+
+# env
+.env
+.env.local
+.env.*.local
+
+# Local working documents — NEVER commit
+docs/superpowers/
+.superpowers/
