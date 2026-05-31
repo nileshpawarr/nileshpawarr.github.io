@@ -1,0 +1,25 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import { seo } from '~/data/seo';
+---
+
+<BaseLayout title="Page not found — Nilesh Pawar" canonical={`${seo.siteUrl}/404`} noindex>
+  <main id="main" class="flex min-h-screen items-center justify-center px-6">
+    <div class="max-w-content text-center">
+      <p class="mb-4 text-meta uppercase tracking-label text-text-faint">404</p>
+      <h1 class="mb-4 text-xl font-medium tracking-head text-text md:text-2xl">
+        That page doesn't exist.
+      </h1>
+      <p class="mb-8 text-base text-text-muted">
+        The link is wrong or the page has moved. Take me back to the start.
+      </p>
+      <a
+        href="/"
+        class="inline-flex items-baseline gap-1 border-b border-border pb-0.5 text-sm font-medium text-text transition-colors duration-fast ease-snappy hover:border-accent hover:text-accent"
+      >
+        Back to home
+        <span aria-hidden="true" class="text-accent">→</span>
+      </a>
+    </div>
+  </main>
+</BaseLayout>
