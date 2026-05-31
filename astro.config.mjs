@@ -8,11 +8,7 @@ export default defineConfig({
   site: 'https://nileshpawarr.github.io',
   trailingSlash: 'ignore',
   output: 'static',
-  integrations: [
-    react(),
-    tailwind({ applyBaseStyles: false }),
-    sitemap(),
-  ],
+  integrations: [react(), tailwind({ applyBaseStyles: false }), sitemap()],
   build: {
     inlineStylesheets: 'auto',
   },
