@@ -1,0 +1,113 @@
+---
+import ThemeToggle from '~/components/islands/ThemeToggle';
+import { profile } from '~/data/profile';
+
+const navLinks = [
+  { href: '#work', label: 'Work' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+
+<div id="nav-sentinel" aria-hidden="true" class="absolute top-0 h-px w-px"></div>
+
+<header
+  id="site-nav"
+  class="fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter,border-color] duration-base ease-standard"
+>
+  <div class="mx-auto flex max-w-container items-center justify-between px-6 py-4 md:px-16">
+    <a
+      href="#top"
+      class="text-sm font-medium tracking-head text-text transition-colors duration-fast ease-snappy hover:text-accent"
+    >
+      {profile.name}
+    </a>
+
+    <nav aria-label="Primary">
+      <ul class="hidden items-center gap-8 md:flex">
+        {
+          navLinks.map(({ href, label }) => (
+            <li>
+              <a
+                href={href}
+                data-nav-link
+                class="nav-link relative text-sm text-text-muted transition-colors duration-fast ease-snappy hover:text-text"
+              >
+                {label}
+              </a>
+            </li>
+          ))
+        }
+        <li><ThemeToggle client:load /></li>
+      </ul>
+
+      <div class="flex items-center gap-3 md:hidden">
+        <ThemeToggle client:load />
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 1px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--dur-fast) var(--ease-snappy);
+  }
+  .nav-link[aria-current='true']::after {
+    transform: scaleX(1);
+  }
+  .nav-link:hover::after {
+    transform: scaleX(0.4);
+  }
+</style>
+
+<script>
+  // Sticky nav blur on scroll
+  const nav = document.getElementById('site-nav')!;
+  const sentinel = document.getElementById('nav-sentinel')!;
+  const scrolledClasses = ['border-b', 'border-border', 'bg-bg/70', 'backdrop-blur-md'];
+
+  const navIo = new IntersectionObserver(
+    ([entry]) => {
+      if (entry && !entry.isIntersecting) {
+        nav.classList.add(...scrolledClasses);
+      } else {
+        nav.classList.remove(...scrolledClasses);
+      }
+    },
+    { rootMargin: '0px' },
+  );
+  navIo.observe(sentinel);
+
+  // Active section in nav
+  const sections = document.querySelectorAll<HTMLElement>('section[id]');
+  const linksByHash = new Map<string, HTMLAnchorElement>();
+  document.querySelectorAll<HTMLAnchorElement>('[data-nav-link]').forEach((a) => {
+    const hash = new URL(a.href, window.location.origin).hash;
+    if (hash) linksByHash.set(hash, a);
+  });
+
+  const sectionIo = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        const hash = `#${entry.target.id}`;
+        const link = linksByHash.get(hash);
+        if (!link) continue;
+        if (entry.isIntersecting) {
+          linksByHash.forEach((l) => l.removeAttribute('aria-current'));
+          link.setAttribute('aria-current', 'true');
+        }
+      }
+    },
+    { rootMargin: '-40% 0px -55% 0px' },
+  );
+  sections.forEach((s) => sectionIo.observe(s));
+</script>
