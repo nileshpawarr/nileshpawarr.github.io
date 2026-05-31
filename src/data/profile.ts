@@ -21,7 +21,7 @@ export const profile: Profile = {
   status: 'Open to senior & staff roles',
   location: 'Berlin, Germany',
   email: 'nileshpawar9922@gmail.com',
-  resumePdf: '/Nilesh-Pawar-Resume.pdf',
+  resumePdf: '/Nilesh_Pawar_Resume.pdf',
   links: {
     github: 'https://github.com/nileshpawarr',
     linkedin: 'https://www.linkedin.com/in/nileshpawarr',
