@@ -21,7 +21,7 @@ test.describe('smoke', () => {
   });
 
   test('resume PDF is reachable', async ({ page }) => {
-    const response = await page.request.get('/Nilesh-Pawar-Resume.pdf');
+    const response = await page.request.get('/Nilesh_Pawar_Resume.pdf');
     expect(response.status()).toBeLessThan(400);
   });
 

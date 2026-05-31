@@ -39,7 +39,7 @@ Edit, commit, push. CI rebuilds and deploys in ~2–3 minutes.
 
 ## Resume
 
-Drop the latest PDF at `public/Nilesh-Pawar-Resume.pdf`. The Contact section's Download CV button links here.
+Drop the latest PDF at `public/Nilesh_Pawar_Resume.pdf`. The Contact section's Download CV button links here.
 
 ## Deploy
 
