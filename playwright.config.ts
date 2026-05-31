@@ -11,10 +11,11 @@ export default defineConfig({
     baseURL: 'http://localhost:4321',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
+    reducedMotion: 'reduce',
   },
   projects: [
-    { name: 'desktop-chrome', use: { ...devices['Desktop Chrome'] } },
-    { name: 'mobile-chrome', use: { ...devices['Pixel 7'] } },
+    { name: 'desktop-chrome', use: { ...devices['Desktop Chrome'], reducedMotion: 'reduce' } },
+    { name: 'mobile-chrome', use: { ...devices['Pixel 7'], reducedMotion: 'reduce' } },
   ],
   webServer: {
     command: 'pnpm run preview',

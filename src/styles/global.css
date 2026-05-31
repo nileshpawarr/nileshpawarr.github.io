@@ -41,7 +41,7 @@
     top: -40px;
     left: 8px;
     background: var(--accent);
-    color: var(--bg);
+    color: var(--accent-fg);
     padding: 8px 12px;
     border-radius: 4px;
     font-weight: 600;
@@ -53,48 +53,51 @@
   }
 
   /* Section reveal — fires when SectionReveal adds .in-view */
-  .reveal {
-    opacity: 0;
-    transform: translateY(16px);
-    transition:
-      opacity var(--dur-slow) var(--ease-out),
-      transform var(--dur-slow) var(--ease-out);
-    will-change: opacity, transform;
-  }
-  .reveal.in-view {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .reveal.in-view > * {
-    animation: reveal-stagger var(--dur-slow) var(--ease-out) both;
-  }
-  .reveal.in-view > *:nth-child(2) {
-    animation-delay: 80ms;
-  }
-  .reveal.in-view > *:nth-child(3) {
-    animation-delay: 160ms;
-  }
-  .reveal.in-view > *:nth-child(4) {
-    animation-delay: 240ms;
-  }
-  .reveal.in-view > *:nth-child(5) {
-    animation-delay: 320ms;
-  }
-  .reveal.in-view > *:nth-child(6) {
-    animation-delay: 400ms;
-  }
-  .reveal.in-view > *:nth-child(7) {
-    animation-delay: 480ms;
-  }
-
-  @keyframes reveal-stagger {
-    from {
+  /* Motion-safe only: elements are visible by default, hidden only when motion is OK */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
       opacity: 0;
-      transform: translateY(8px);
+      transform: translateY(16px);
+      transition:
+        opacity var(--dur-slow) var(--ease-out),
+        transform var(--dur-slow) var(--ease-out);
+      will-change: opacity, transform;
     }
-    to {
+    .reveal.in-view {
       opacity: 1;
       transform: translateY(0);
+    }
+    .reveal.in-view > * {
+      animation: reveal-stagger var(--dur-slow) var(--ease-out) both;
+    }
+    .reveal.in-view > *:nth-child(2) {
+      animation-delay: 80ms;
+    }
+    .reveal.in-view > *:nth-child(3) {
+      animation-delay: 160ms;
+    }
+    .reveal.in-view > *:nth-child(4) {
+      animation-delay: 240ms;
+    }
+    .reveal.in-view > *:nth-child(5) {
+      animation-delay: 320ms;
+    }
+    .reveal.in-view > *:nth-child(6) {
+      animation-delay: 400ms;
+    }
+    .reveal.in-view > *:nth-child(7) {
+      animation-delay: 480ms;
+    }
+
+    @keyframes reveal-stagger {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   }
 }
