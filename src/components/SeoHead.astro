@@ -1,0 +1,66 @@
+---
+import { seo } from '~/data/seo';
+import { buildPersonJsonLd, buildWebsiteJsonLd } from '~/lib/seo';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = seo.defaultTitle,
+  description = seo.defaultDescription,
+  canonical = seo.siteUrl,
+  ogImage = `${seo.siteUrl}${seo.ogImage}`,
+  noindex = false,
+} = Astro.props;
+
+const personJson = JSON.stringify(buildPersonJsonLd());
+const websiteJson = JSON.stringify(buildWebsiteJsonLd());
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+
+<meta name="robots" content={noindex ? 'noindex,nofollow' : 'index,follow'} />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta charset="UTF-8" />
+
+<!-- Theme color responds to active theme -->
+<meta name="theme-color" content={seo.themeColorLight} media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content={seo.themeColorDark} media="(prefers-color-scheme: dark)" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Nilesh Pawar" />
+<meta property="og:url" content={canonical} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content={seo.locale} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<!-- Sitemap -->
+<link rel="sitemap" href="/sitemap-index.xml" />
+
+<!-- Structured data -->
+<script type="application/ld+json" set:html={personJson} />
+<script type="application/ld+json" set:html={websiteJson} />
