@@ -1,0 +1,35 @@
+---
+import SeoHead from '~/components/SeoHead.astro';
+import { THEME_BOOTSTRAP_SCRIPT } from '~/lib/theme';
+import '~/styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  noindex?: boolean;
+}
+
+const { title, description, canonical, ogImage, noindex } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Theme bootstrap MUST run before paint to avoid FOUC -->
+    <script is:inline set:html={THEME_BOOTSTRAP_SCRIPT} />
+
+    <SeoHead
+      title={title}
+      description={description}
+      canonical={canonical}
+      ogImage={ogImage}
+      noindex={noindex}
+    />
+  </head>
+  <body class="min-h-screen antialiased">
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <slot />
+  </body>
+</html>
