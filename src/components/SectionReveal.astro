@@ -1,0 +1,32 @@
+---
+export interface Props {
+  as?: 'div' | 'section';
+  className?: string;
+}
+
+const { as: Tag = 'div', className = '' } = Astro.props;
+---
+
+<Tag class:list={['reveal', className]} data-reveal>
+  <slot />
+</Tag>
+
+<script>
+  const targets = document.querySelectorAll<HTMLElement>('[data-reveal]');
+  if ('IntersectionObserver' in window && targets.length > 0) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            io.unobserve(entry.target);
+          }
+        }
+      },
+      { rootMargin: '0px 0px -10% 0px', threshold: 0.05 },
+    );
+    targets.forEach((el) => io.observe(el));
+  } else {
+    targets.forEach((el) => el.classList.add('in-view'));
+  }
+</script>
