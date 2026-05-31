@@ -57,6 +57,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.3.7
         version: 18.3.7(@types/react@18.3.29)
+      autoprefixer:
+        specifier: ^10.5.0
+        version: 10.5.0(postcss@8.5.15)
       eslint:
         specifier: ^9.39.4
         version: 9.39.4(jiti@1.21.7)

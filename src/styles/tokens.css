@@ -1,0 +1,78 @@
+:root {
+  /* Palette — light (default for OS without preference, overridden by [data-theme]) */
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --border: #e5e5e5;
+  --text: #0a0a0a;
+  --text-muted: #525252;
+  --text-faint: #737373;
+  --accent: #16a34a;
+  --accent-soft: rgba(22, 163, 74, 0.12);
+
+  /* Typography */
+  --font-sans: 'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Consolas, monospace;
+
+  /* Type scale (rem) */
+  --text-meta: 0.6875rem;
+  --text-sm: 0.8125rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+  --text-hero-sm: 2.25rem;
+  --text-hero: 3.5rem;
+
+  /* Spacing */
+  --section-py: 6rem; /* mobile 64px → 96px desktop via @media below */
+  --container-max: 60rem; /* 960px */
+  --content-max: 45rem; /* 720px */
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-standard: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-snappy: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-micro: 150ms;
+  --dur-fast: 200ms;
+  --dur-base: 300ms;
+  --dur-slow: 500ms;
+  --dur-hero: 700ms;
+}
+
+/* Dark theme — applied via data-theme="dark" on <html> (Task 10 sets this) */
+[data-theme='dark'] {
+  --bg: #0b0b0c;
+  --surface: #111113;
+  --border: #2a2a2d;
+  --text: #ededed;
+  --text-muted: #8b8b90;
+  --text-faint: #6b6b70;
+  --accent: #84e194;
+  --accent-soft: rgba(132, 225, 148, 0.15);
+}
+
+/* System preference fallback (used by theme bootstrap if no user choice stored) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg: #0b0b0c;
+    --surface: #111113;
+    --border: #2a2a2d;
+    --text: #ededed;
+    --text-muted: #8b8b90;
+    --text-faint: #6b6b70;
+    --accent: #84e194;
+    --accent-soft: rgba(132, 225, 148, 0.15);
+  }
+}
+
+/* Reduced motion — single source of truth */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
