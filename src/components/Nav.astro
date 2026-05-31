@@ -23,28 +23,27 @@ const navLinks = [
       {profile.name}
     </a>
 
-    <nav aria-label="Primary">
-      <ul class="hidden items-center gap-8 md:flex">
-        {
-          navLinks.map(({ href, label }) => (
-            <li>
-              <a
-                href={href}
-                data-nav-link
-                class="nav-link relative text-sm text-text-muted transition-colors duration-fast ease-snappy hover:text-text"
-              >
-                {label}
-              </a>
-            </li>
-          ))
-        }
-        <li><ThemeToggle client:load /></li>
-      </ul>
+    <div class="flex items-center gap-3 md:gap-8">
+      <nav aria-label="Primary">
+        <ul class="flex items-center gap-4 md:gap-8">
+          {
+            navLinks.map(({ href, label }) => (
+              <li>
+                <a
+                  href={href}
+                  data-nav-link
+                  class="nav-link relative text-sm text-text-muted transition-colors duration-fast ease-snappy hover:text-text"
+                >
+                  {label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
 
-      <div class="flex items-center gap-3 md:hidden">
-        <ThemeToggle client:load />
-      </div>
-    </nav>
+      <ThemeToggle client:load />
+    </div>
   </div>
 </header>
 
