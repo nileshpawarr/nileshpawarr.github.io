@@ -20,7 +20,7 @@ export const profile: Profile = {
     'Senior Frontend-focused Full Stack Engineer with 12+ years architecting and shipping web applications across enterprise consultancies and product-led startups. Experienced across React, Angular, Vue, and Svelte, with TypeScript, Node.js, and NestJS backend delivery and a strong system-design and microfrontend-architecture foundation. Early, fluent adopter of AI/LLM developer tooling: applies Claude, GitHub Copilot, prompt engineering, and Model Context Protocol (MCP) workflows to automate engineering pipelines and compress delivery cycle time.',
   status: 'Open to senior & staff roles',
   location: 'Berlin, Germany',
-  email: 'nileshpawar9922@gmail.com',
+  email: 'work.nileshpawar@gmail.com',
   resumePdf: '/Nilesh_Pawar_Resume.pdf',
   links: {
     github: 'https://github.com/nileshpawarr',
