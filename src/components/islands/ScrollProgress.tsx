@@ -4,11 +4,6 @@ export default function ScrollProgress() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // If browser supports CSS scroll-driven animations, fall back to a pure CSS bar
-    // and skip the JS island entirely. (The CSS version lives in tokens via .scroll-bar.)
-    const supportsScrollTimeline = CSS.supports('animation-timeline: scroll()');
-    if (supportsScrollTimeline) return;
-
     function onScroll() {
       const el = document.documentElement;
       const total = el.scrollHeight - el.clientHeight;
