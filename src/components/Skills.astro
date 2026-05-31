@@ -1,0 +1,37 @@
+---
+import SectionReveal from '~/components/SectionReveal.astro';
+import { skillGroups } from '~/data/skills';
+---
+
+<section
+  id="skills"
+  aria-labelledby="skills-heading"
+  class="scroll-mt-20 border-t border-border px-6 py-24 md:px-16 md:py-32"
+>
+  <div class="mx-auto max-w-container">
+    <SectionReveal>
+      <p class="mb-6 text-meta uppercase tracking-label text-text-faint">Skills</p>
+      <h2
+        id="skills-heading"
+        class="mb-10 max-w-content text-xl font-medium tracking-head text-text md:text-2xl"
+      >
+        Frontend depth, full-stack reach, AI-native delivery.
+      </h2>
+
+      <div class="grid gap-x-10 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+        {
+          skillGroups.map((group) => (
+            <div>
+              <h3 class="mb-4 text-sm font-medium tracking-head text-text">{group.title}</h3>
+              <ul class="flex flex-wrap gap-x-3 gap-y-2">
+                {group.items.map((s) => (
+                  <li class="text-sm text-text-muted">{s}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </SectionReveal>
+  </div>
+</section>
